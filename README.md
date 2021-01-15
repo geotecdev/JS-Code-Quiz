@@ -1,2 +1,2 @@
 # JS-Code-Quiz
-Website with interactive JavaScript that quizzes user's JS knowledge
+Website with event driven JavaScript and localstorage that quizzes user's JS knowledge
