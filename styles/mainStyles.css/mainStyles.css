@@ -1,0 +1,15 @@
+.siteBody {
+    height: 100%;
+    width: 100%;
+    background-color: #E4E5E6;
+}
+
+/* site navigation bar */
+#siteNavBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+}
