@@ -25,6 +25,7 @@
     border-color: black;
     border-width: 1px;
     border-style: solid;
+    
 }
 
 #startBtn {
@@ -136,8 +137,21 @@
     border-width: 1px;
     border-style: solid;
     padding-bottom: 20px;
+    position: relative;
+    z-index: 1;
 }
 
+/* #coverContainer {
+    display: none;
+} */
+
+/* 
+height:0;
+padding:100px 0 0 0;
+width:100px; */
+/* 
+left:0;
+top:0; */
 
 .questionCard {
     min-height: 15px;
@@ -158,7 +172,8 @@ text-align: left; */
 
 .choicesRow {
     max-height: 160px;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 
 }
 
@@ -177,7 +192,7 @@ text-align: left; */
     border-width: 1px;
     border-color: black;
     box-shadow: 3px 2px 2px darkgray;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     justify-content: center;

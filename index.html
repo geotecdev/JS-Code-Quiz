@@ -9,6 +9,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src=".\\scripts\script.js"></script>
     <title>JS Code Quiz</title>
 </head>
 
@@ -45,7 +46,7 @@
 
                     <!-- start btn and wrapper -->
                     <figure class="childWrapper startBtnWrapper">
-                        <button id="startBtn">Start Quiz</button>                  
+                        <button id="startBtn" >Start Quiz</button>                  
                     </figure>
 
                     <!-- readout for quiz timer -->
@@ -80,47 +81,50 @@
         </nav>
     </section>
 
-    <!-- question card thumbnail -->
+    <!-- question card section -->
     <section class="row col-md-9 sectionCard">
 
-        <div class="questionCard">
-            <p class="questionText">What does the "DOM" stand for  What does the "DOM" stand for  What does the "DOM" stand for</p>
-        </div>
-
-        <div class="container col-md-9">
-            
-            <!-- row 1 -->
-            <section class="row choicesRow">
-                <div class="col col-md-3 choiceCell">
-                    <figure  class="choiceThumbnail">
-                        <!-- <span class="choiceLabel">A)</span> -->
-                        <p class="choiceText">Document Object Model</p>
-                    </figure>
-                </div>
-                <div class="col col-md-3 choiceCell">
-                    <figure class="choiceThumbnail">
-                        <!-- <span class="choiceLabel">B)</span> -->
-                        <p class="choiceText">Dominic</p>
-                    </figure>
-                </div>
-            </section>
-
-            <!-- row 2 -->
-            <section class="row choicesRow">
-                <div class="col col-md-3 choiceCell">
-                    <figure  class="choiceThumbnail">
-                        <!-- <span class="choiceLabel">A)</span> -->
-                        <p class="choiceText">wrong answer 2</p>
-                    </figure>
-                </div>
-                <div class="col col-md-3 choiceCell">
-                    <figure class="choiceThumbnail">
-                        <!-- <span class="choiceLabel">B)</span> -->
-                        <p class="choiceText">wrong answer 3 long text</p>
-                    </figure>
-                </div>
-            </section>
-            <br><br> 
+        <!-- cover for quiz area when timer isn't running -->
+        <div id="coverContainer">
+            <div class="questionCard">
+                <p class="questionText">What does the "DOM" stand for  What does the "DOM" stand for  What does the "DOM" stand for</p>
+            </div>
+    
+            <div class="container col-md-9">
+                
+                <!-- answer choices row 1 -->
+                <section class="row choicesRow">
+                    <div class="col col-md-3 choiceCell">
+                        <figure  class="choiceThumbnail">
+                            <!-- <span class="choiceLabel">A)</span> -->
+                            <p class="choiceText">Document Object Model</p>
+                        </figure>
+                    </div>
+                    <div class="col col-md-3 choiceCell">
+                        <figure class="choiceThumbnail">
+                            <!-- <span class="choiceLabel">B)</span> -->
+                            <p class="choiceText">Dominic</p>
+                        </figure>
+                    </div>
+                </section>
+    
+                <!--answer choices  row 2 -->
+                <section class="row choicesRow">
+                    <div class="col col-md-3 choiceCell">
+                        <figure  class="choiceThumbnail">
+                            <!-- <span class="choiceLabel">A)</span> -->
+                            <p class="choiceText">wrong answer 2</p>
+                        </figure>
+                    </div>
+                    <div class="col col-md-3 choiceCell">
+                        <figure class="choiceThumbnail">
+                            <!-- <span class="choiceLabel">B)</span> -->
+                            <p class="choiceText">wrong answer 3 long text</p>
+                        </figure>
+                    </div>
+                </section>
+                <br><br> 
+            </div>
         </div>
         
     </section>
