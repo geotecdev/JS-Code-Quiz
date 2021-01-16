@@ -223,3 +223,15 @@ text-align: left; */
         padding-bottom: 30px;
     }
 }
+
+.collapseCol {
+    width: auto;
+}
+
+
+@media screen and (max-width: 791px) {  
+
+    .collapseCol {
+        display: none;
+    }
+}
