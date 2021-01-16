@@ -1,0 +1,163 @@
+.siteBody {
+    height: 100%;
+    width: 100%;
+    background-color: #E4E5E6;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* site navigation bar */
+#siteNavBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+}
+
+/* quiz control box */
+#quizControlBox {
+    height: 110px;
+    margin: 15px 15px 5px 15px;
+    background-color: ghostwhite;
+    box-shadow: 4px 3px 3px darkgray;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+#startBtn {
+    height: 40px;
+    width: 160px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.childWrapper {
+    float: left;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.startBtnWrapper {
+    margin-left: 25px;
+    height: 110px;
+}
+
+.timerWrapper {
+    width: 170px;
+    margin-left: 60px;
+    min-height: 110px;
+    text-align: center;
+}
+
+
+.gameCaptionWrapper {
+    width: 200px;
+    height: 110px;
+    margin-left: 15px;
+    text-indent: 10px;
+}
+
+@media screen and (max-width: 695px) {  
+
+    .gameCaptionWrapper {
+        display: none;               
+    }
+}
+
+#secondsReadout, 
+.gameCaption {
+    color: slategray;
+    width: 100%;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.playerWrapper {
+    width: 300px;
+    height: 110px;
+    margin-left: 105px;
+    text-indent: 10px;
+}
+
+
+@media screen and (max-width: 1465px) {  
+
+    .playerWrapper {
+        display: none;               
+    }
+}
+
+.helpBtnWrapper {
+    height: 110px;
+    width: 60px;
+    margin-left: 280px;
+}
+
+.helpBtn {
+    height: 60px;
+    width: 75px;
+    font-size: 30px;
+    background-color: ghostwhite;
+    color: darkblue;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    border-width: 1px;
+    border-color: lightgray;
+    border-style: solid;
+}
+
+@media screen and (max-width: 1919px) {  
+
+    .helpBtnWrapper {
+        display: none;               
+    }
+}
+
+
+/* border-width: 1px;
+border-color: red;
+border-style: solid; */
+
+/* 
+#startBtn {
+    height: 40px;
+    width: 160px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    margin-left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.btnWrapper {
+    min-width: 130px;
+    height:100%;
+    display: flex;
+    float: left;
+    justify-content: center;
+} */
+
+
+.sectionCard {
+    min-height: 450px;
+    margin: 15px 15px 0px 15px;
+    background-color: ghostwhite;
+    box-shadow: 4px 3px 3px darkgray;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}

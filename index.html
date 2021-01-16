@@ -14,29 +14,75 @@
 
 <body class="siteBody">
 
-        <!-- nav bar -->
-        <header class="col-xl-12">
-            <nav id="siteNavBar" class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href=".//index.html">JS Code Quiz</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
+    <!-- nav bar -->
+    <header class="col-xl-12">
+        <nav id="siteNavBar" class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href=".//index.html">JS Code Quiz</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href=".//index.html">Quiz</a></li>
                         <li ><a href=".//highScores.html">High Scores</a></li>
                     </ul>
-
-                    </div>
                 </div>
-            </nav>
-            <br><br><br>
-        </header>
+            </div>
+        </nav>
+        <br><br><br>
+    </header>
+
+    <!-- quiz control header -->
+    <section class="row col-md-9" id="quizControlBox">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-header">
+
+                    <!-- start btn and wrapper -->
+                    <figure class="childWrapper startBtnWrapper">
+                        <button id="startBtn">Start Quiz</button>                  
+                    </figure>
+
+                    <!-- readout for quiz timer -->
+                    <figure class="childWrapper timerWrapper" id="timerDisplay">
+                        <h5><strong>Seconds Remaining</strong></h5>
+                        <figcaption id="secondsReadout">22</figcaption>
+                    </figure> 
+
+                    <!-- win and loss counters -->
+                    <figure class="childWrapper gameCaptionWrapper">
+                        <h5><strong>Right: </strong></h5>
+                        <figcaption class="gameCaption">3</figcaption>
+                        <h5><strong>Wrong: </strong></h5>
+                        <figcaption class="gameCaption">1</figcaption>
+                    </figure>
+
+                    <!-- player name -->
+                    <figcaption class="childWrapper playerWrapper">
+                        <h5><strong>player: </strong></h5>
+                        <figcaption class="gameCaption">geotecdev</figcaption>
+                    </figcaption>
+                    
+                    <!-- help button -->
+                    <figure class="childWrapper helpBtnWrapper">
+                        <button class="helpBtn">
+                            <span class="glyphicon glyphicon-question-sign"></span>
+                        </button>
+                    </figure>
+
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <section class="row col-md-9 sectionCard">
+
+    </section>
 
 </body>
 
