@@ -70,7 +70,7 @@
                     
                     <!-- help button -->
                     <figure class="childWrapper helpBtnWrapper">
-                        <button class="helpBtn">
+                        <button class="helpBtn" data-toggle="modal" data-target="#exampleModal">
                             <span class="glyphicon glyphicon-question-sign"></span>
                         </button>
                     </figure>
@@ -84,7 +84,7 @@
     <section class="row col-md-9 sectionCard">
 
         <div class="questionCard">
-            <p class="questionText">What does the "DOM" stand for</p>
+            <p class="questionText">What does the "DOM" stand for  What does the "DOM" stand for  What does the "DOM" stand for</p>
         </div>
 
         <div class="container col-md-9">
@@ -120,8 +120,35 @@
                     </figure>
                 </div>
             </section>
+            <br><br> 
         </div>
-    </section>    
+        
+    </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Javascript Quiz Information</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Button trigger modal -->
+  <button type="button"  data-toggle="modal" data-target="#exampleModal"></button>
+
 </body>
 
 </html>

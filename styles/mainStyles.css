@@ -128,7 +128,7 @@
 /* quiz quesion section */
 
 .sectionCard {
-    min-height: 550px;
+    min-height: 250px;
     margin: 15px 15px 0px 15px;
     background-color: ghostwhite;
     box-shadow: 4px 3px 3px darkgray;
@@ -141,13 +141,9 @@
 
 .questionCard {
     min-height: 15px;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-bottom: 10px;
 
-
-    border-color: purple;
-    border-width: 1px;
-    border-style: solid;
 }
 
 /* max-width: 690px;
