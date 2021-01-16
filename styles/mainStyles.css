@@ -98,6 +98,12 @@
     }
 }
 
+
+#playerName {
+    color: black;
+    text-indent: 30px;
+}
+
 .helpBtnWrapper {
     height: 110px;
     width: 60px;
@@ -185,7 +191,7 @@ text-align: left; */
 }
 
 .choiceThumbnail {
-    background-color: ghostwhite;
+    background-color: #fff5cc;
     height: 70px;
     max-width: 660px;
     border-style: solid;

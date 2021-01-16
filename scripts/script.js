@@ -1,35 +1,54 @@
-var coverContainer;
-var startBtn;
-
-// event listener to make sure all elements have loaded
-document.addEventListener("DOMContentLoaded", function(event){
+window.onload = function() {
+    //timer variables
+    var timer;
+    var timerCount;
 
     //set element variable values
-    coverContainer = document.querySelector("#coverContainer");
+    var coverContainer = document.querySelector("#coverContainer");
     coverContainer.style.display  = "none";
-    startBtn = document.querySelector("#startBtn");
+    var startBtn = document.querySelector("#startBtn");
+    var playerNameEl = document.querySelector("#playerName");
 
     //event listeners
-    document.querySelector("#startBtn").addEventListener("click", hideContentCover);
+    startBtn.addEventListener("click", startQuiz);
 
 
-});
+    //functions
 
+    //player name set localstorage logic and ui changes to start quiz. calls main 'quizAttempt' function 
+    function startQuiz() {
+        var playerName = localStorage.getItem("playerName");
+        if (playerName !== null){
+            playerNameEl.innerHTML = playerName;
+        } else {
+            if (playerName === null || playerName === "") {
+                playerName = prompt("enter your name for the leaderboard");  
+                if (playerName === null || playerName === "") {
+                    alert("name value is required to take the quiz")
+                    return;
+                } else {
+                    localStorage.setItem("playerName", playerName);
+                    playerNameEl.innerHTML = playerName;                    
+                }
+            }
+        }
 
+        //start quiz
+        hideContentCover();
+        timerCount = 35;
+        startTimer()      
+    }
 
+    function startTimer() {
+        
+    }
 
+    function hideContentCover() {
+        coverContainer.style.display = "block";
+    };
 
+    function showContentCover() {
+        coverContainer.style.display = "none";
+    }
 
-//functions
-
-function hideContentCover() {
-    coverContainer.style.display = "block";
-};
-
-function showContentCover() {
-    coverContainer.style.display = "none";
 }
-
-
-
-
