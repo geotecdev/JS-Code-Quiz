@@ -113,7 +113,7 @@
 .helpBtn {
     height: 60px;
     width: 75px;
-    font-size: 25px;
+    font-size: 20px;
     background-color: ghostwhite;
     color: darkblue;
     font-weight: bold;
@@ -121,7 +121,7 @@
     display: inline-block;
     vertical-align: middle;
     border-width: 1px;
-    border-color: lightgray;
+    border-color: whitesmoke;
     border-style: solid;
 }
 
@@ -273,8 +273,16 @@ text-align: left; */
     border: 1px solid #888;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 250px;
+    min-height: 150px;
     z-index: 10;
+}
+
+#quizResultsText {
+    size: 22px;
+    font-weight: bold;
+    color: navy;
+    text-indent: 5px;    
 }
 
 .closeSpan {
@@ -287,6 +295,12 @@ text-align: left; */
 .closeSpan:hover
 .closeSpan:focus {
     color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.playerLabel:hover {
+    color: limegreen;
     text-decoration: none;
     cursor: pointer;
 }

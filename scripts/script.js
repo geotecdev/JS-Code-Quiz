@@ -14,6 +14,7 @@ var wrongCaptionEl;
 var resultsModalEl;
 var resultsModalContentEl;
 var closeResultsEl;
+var playerLabelEl;
 
 //question and quiz variables
 var questions;
@@ -22,7 +23,9 @@ var questionNumber = 0;
 var questionText = ""
 var rightAnswerCount = 0;
 var wrongAnswerCount = 0;
-var quizResultsText = ""
+var quizResultsText = "TIMES UP. YOU FAIL!!!";
+var resultsModalCaptionEl;
+var finishedQuiz = false;
 
 //makes sure window has loaded before accessing elements
 window.onload = function() {
@@ -41,6 +44,8 @@ window.onload = function() {
     resultsModalEl = document.querySelector(".resultsModal");
     resultsModalContentEl = document.querySelector("#resultsModalContent")
     closeResultsEl = document.querySelector(".closeSpan");
+    resultsModalCaptionEl = document.querySelector("#quizResultsText");
+    playerLabelEl = document.querySelector("#playerLabel");
 
     //event listeners
     startBtn.addEventListener("click", startQuiz);
@@ -108,22 +113,30 @@ function runQuiz() {
             //if quiz is completed...
             if (questionNumber > questions.length)
             {
-                alert("last question answered");
+                finishedQuiz = true;                
                 clearInterval(timer);
+                endQuiz();
             }
         }
 
         //if time runs out...
         if (timerCount === 0) {
-            clearInterval(timer);              
+            clearInterval(timer);            
+            endQuiz();              
         }
     }, 1000);
 
-    showContentCover();
+    changeElementVisibility(coverContainer, "block");
 }
 
 function endQuiz() {
-    
+    if (finishedQuiz) {
+        quizResultsText = "Nice job! you got " + rightAnswerCount + " questions right and completed the quis in " 
+        + secondsEl.textContent + " seconds. Check out the highscore page to see your ranking.";
+    }
+
+    showResultsModal(quizResultsText);
+    changeElementVisibility(coverContainer, "none");
 }
 
 function setNextQuesiton() {
@@ -168,7 +181,8 @@ function chooseAnswer() {
 
 }
 
-function showResultsModal() {
+function showResultsModal(message) {
+    resultsModalCaptionEl.textContent = message;
     resultsModalEl.style.display = "block";
     resultsModalContentEl.style.display = "block";
 }
@@ -181,5 +195,8 @@ function showContentCover() {
     coverContainer.style.display = "block";
 }
 
+function changeElementVisibility(el, displayStyle) {
+    el.style.display = displayStyle;
+}
 
 
