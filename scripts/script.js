@@ -23,11 +23,11 @@ var questionNumber = 0;
 var questionText = ""
 var rightAnswerCount = 0;
 var wrongAnswerCount = 0;
-var quizResultsText = "TIMES UP. YOU FAIL!!!";
+var quizResultsText = "TIMES UP. YOU FAIL!!!!!";
 var resultsModalCaptionEl;
 var finishedQuiz = false;
 
-//makes sure window has loaded before accessing elements
+//makes sure window has loaded before accessing page elements
 window.onload = function() {
 
     //set element variable values
@@ -45,13 +45,14 @@ window.onload = function() {
     resultsModalContentEl = document.querySelector("#resultsModalContent")
     closeResultsEl = document.querySelector(".closeSpan");
     resultsModalCaptionEl = document.querySelector("#quizResultsText");
-    playerLabelEl = document.querySelector("#playerLabel");
+    playerLabelEl = document.querySelector(".playerLabel");
 
     //event listeners
     startBtn.addEventListener("click", startQuiz);
     testBtn.addEventListener("click", showResultsModal);
+    playerLabelEl.addEventListener("click", getPlayerName);
 
-    //choice thumbnails event listeners
+    //set choice thumbnails event listeners
     for (var i = 1; i < 5; i++) {
         document.getElementById("choiceThumbnail" + i).addEventListener("click", chooseAnswer);
     }
@@ -65,7 +66,7 @@ window.onload = function() {
         resultsModalEl.style.display = "none";
     });
 
-    //load question objects from questions.js
+    //load question objects from questions.js, set first index as 'activeQuestion'
     questions = loadQuestions();
     activeQuestion = questions[0];
     
@@ -75,8 +76,21 @@ window.onload = function() {
 //player name set localstorage logic and ui changes to start quiz. calls main 'runQuiz' function 
 function startQuiz() {
 
+    //get or set player name for highscores table
+    getPlayerName();
+
+    //set first question object and start the quiz
+    setNextQuesiton();
+    changeElementVisibility(coverContainer, "none");
+    runQuiz()      
+}
+
+//get player name function for start btn and 'player:' tag click event
+function getPlayerName(clearExistingName=false) {
     //get player name from localstorage, prompt and set if none exists
-    var playerName = localStorage.getItem("playerName");
+    if (!clearExistingName) {
+        var playerName = localStorage.getItem("playerName");
+    }    
     if (playerName !== null){
         playerNameEl.innerHTML = playerName;
         //if not, ask user for value
@@ -89,16 +103,12 @@ function startQuiz() {
                 //leave function if no valid name is entered
                 return;
             } else {
+                //save valid playerName to local storage with the key 'playerName'
                 localStorage.setItem("playerName", playerName);
                 playerNameEl.innerHTML = playerName;                    
             }
         }
     }
-
-    //set first question object and start the quiz
-    setNextQuesiton();
-    hideContentCover();
-    runQuiz()      
 }
 
 //main quiz attempt function w/ timer
@@ -144,9 +154,10 @@ function setNextQuesiton() {
     rightCaptionEl.textContent = rightAnswerCount;
     wrongCaptionEl.textContent = wrongAnswerCount;
 
+    //increment current question number
     questionNumber++;
 
-    //if last question, exit function
+    //exit function if it's the last question
     if (questionNumber > questions.length) {
         return;
     }
@@ -183,16 +194,7 @@ function chooseAnswer() {
 
 function showResultsModal(message) {
     resultsModalCaptionEl.textContent = message;
-    resultsModalEl.style.display = "block";
-    resultsModalContentEl.style.display = "block";
-}
-
-function hideContentCover() {
-    coverContainer.style.display = "none";
-};
-
-function showContentCover() {
-    coverContainer.style.display = "block";
+    changeElementVisibility(resultsModalEl, "block");
 }
 
 function changeElementVisibility(el, displayStyle) {
