@@ -11,6 +11,9 @@ var testBtn;
 var questionTextEl;
 var rightCaptionEl;
 var wrongCaptionEl;
+var resultsModalEl;
+var resultsModalContentEl;
+var closeResultsEl;
 
 //question and quiz variables
 var questions;
@@ -19,7 +22,7 @@ var questionNumber = 0;
 var questionText = ""
 var rightAnswerCount = 0;
 var wrongAnswerCount = 0;
-var flashInterval;
+var quizResultsText = ""
 
 //makes sure window has loaded before accessing elements
 window.onload = function() {
@@ -34,16 +37,28 @@ window.onload = function() {
     testBtn = document.querySelector("#testBtn");
     questionTextEl = document.querySelector("#questionText");
     rightCaptionEl = document.querySelector("#rightCaption");
-    wrongCaptionEl = document.querySelector("#wrongCaption")
+    wrongCaptionEl = document.querySelector("#wrongCaption");
+    resultsModalEl = document.querySelector(".resultsModal");
+    resultsModalContentEl = document.querySelector("#resultsModalContent")
+    closeResultsEl = document.querySelector(".closeSpan");
 
     //event listeners
     startBtn.addEventListener("click", startQuiz);
-    testBtn.addEventListener("click", setNextQuesiton);
+    testBtn.addEventListener("click", showResultsModal);
 
     //choice thumbnails event listeners
     for (var i = 1; i < 5; i++) {
         document.getElementById("choiceThumbnail" + i).addEventListener("click", chooseAnswer);
     }
+
+    //event listeners to close results modal
+    resultsModalEl.addEventListener("click", function() {
+        resultsModalEl.style.display = "none";
+    });
+
+    closeResultsEl.addEventListener("click", function() {
+        resultsModalEl.style.display = "none";
+    });
 
     //load question objects from questions.js
     questions = loadQuestions();
@@ -88,16 +103,14 @@ function runQuiz() {
         secondsEl.textContent = timerCount;
 
         //quiz logic
-        if (timerCount >= 0) {
-
-            ////iterate through question objects
-            
-            //while (questionNumber < questions.length) {
-
-            //}
+        if (timerCount > 0) {
 
             //if quiz is completed...
-
+            if (questionNumber > questions.length)
+            {
+                alert("last question answered");
+                clearInterval(timer);
+            }
         }
 
         //if time runs out...
@@ -109,22 +122,29 @@ function runQuiz() {
     showContentCover();
 }
 
+function endQuiz() {
+    
+}
+
 function setNextQuesiton() {
+    //update header displays
+    rightCaptionEl.textContent = rightAnswerCount;
+    wrongCaptionEl.textContent = wrongAnswerCount;
+
     questionNumber++;
+
+    //if last question, exit function
+    if (questionNumber > questions.length) {
+        return;
+    }
+
     activeQuestion = questions[questionNumber - 1];
     questionTextEl.textContent = activeQuestion.question;
 
     //iterate through answers, set text in choice elements
     for (var i = 0; i < activeQuestion.answerChoices.length; i++) {
-        document.getElementById("choice" + (i + 1)).textContent = activeQuestion.answerChoices[i];   
-        
-        //clear any choice thuymbnail border styling from last question
-        document.getElementById("choiceThumbnail" + (i + 1)).style.border = "1px solid black";
+        document.getElementById("choice" + (i + 1)).textContent = activeQuestion.answerChoices[i];
     }
-
-    //update header displays
-    rightCaptionEl.textContent = rightAnswerCount;
-    wrongCaptionEl.textContent = wrongAnswerCount;
 }
 
 //function fired by click event on choiceThumbnails
@@ -140,11 +160,17 @@ function chooseAnswer() {
     }
     //if incorrect 
     else {
-        wrongAnswerCount++; 
+        wrongAnswerCount++;
+        //decrement time for wrong answer
         timerCount -= 7;
         setNextQuesiton();
     }        
 
+}
+
+function showResultsModal() {
+    resultsModalEl.style.display = "block";
+    resultsModalContentEl.style.display = "block";
 }
 
 function hideContentCover() {
@@ -155,16 +181,5 @@ function showContentCover() {
     coverContainer.style.display = "block";
 }
 
-function updateControlBox() {
 
-}
 
-// function flashBorder(clickedEl) {
-//     flashInterval = setInterval(function(){
-//         clickedEl.style.border = "2px solid red";
-//     }, 1000);
-
-//     clearInterval(flashInterval);                    
-// }
-
-// //        clickedEl.style.border = "1px solid black";
