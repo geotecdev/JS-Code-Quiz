@@ -20,7 +20,7 @@ var playerLabelEl;
 var questions;
 var activeQuestion;
 var questionNumber = 0;
-var questionText = ""
+var questionText = "";
 var rightAnswerCount = 0;
 var wrongAnswerCount = 0;
 var quizResultsText = "TIMES UP. YOU FAIL!!!!!";
@@ -76,8 +76,8 @@ window.onload = function() {
 //player name set localstorage logic and ui changes to start quiz. calls main 'runQuiz' function 
 function startQuiz() {
 
-    //get or set player name for highscores table
-    getPlayerName();
+    //get or set player name for highscores table (opt false param prevents deletion of existing name)
+    getPlayerName(false);
 
     //set first question object and start the quiz
     setNextQuesiton();
@@ -85,12 +85,15 @@ function startQuiz() {
     runQuiz()      
 }
 
-//get player name function for start btn and 'player:' tag click event
-function getPlayerName(clearExistingName=false) {
-    //get player name from localstorage, prompt and set if none exists
-    if (!clearExistingName) {
-        var playerName = localStorage.getItem("playerName");
-    }    
+//shared function function for start btn and 'player:' [getPlayerName(false)] tag click event.
+function getPlayerName(clearExistingName=true) {
+    // -- get player name from localstorage, prompt and set if none exists
+    //delete existing playername from local storage if reset argument is passed
+    if (clearExistingName) {
+        localStorage.removeItem("playerName")
+    }
+
+    var playerName = localStorage.getItem("playerName");
     if (playerName !== null){
         playerNameEl.innerHTML = playerName;
         //if not, ask user for value
@@ -140,13 +143,50 @@ function runQuiz() {
 }
 
 function endQuiz() {
+    //if user completed the quiz...
     if (finishedQuiz) {
-        quizResultsText = "Nice job! you got " + rightAnswerCount + " questions right and completed the quis in " 
+        //set more positive message text for the results modal
+        quizResultsText = "Nice job! you got " + rightAnswerCount + " questions right and completed the quiz in " 
         + secondsEl.textContent + " seconds. Check out the highscore page to see your ranking.";
+
+        //score object - name, date, right, wrong, score (seconds remaining)
+        var quizScore = {
+            playerName: playerNameEl.textContent,
+            quizDate: new Date().toLocaleString(),
+            rightAnswerCount: rightAnswerCount,
+            wrongAnswerCount: wrongAnswerCount,
+            score: parseInt(secondsEl.textContent)
+        };
+
+        //get existing highScores array from ls
+        var highScoresJson = localStorage.getItem("highScores");
+        var highScores = JSON.parse(highScoresJson || "[]");
+
+        //add user score to the array
+        highScores.push(quizScore);
+
+        //save updated array back to local storage
+        localStorage.setItem("highScores", JSON.stringify(highScores));
     }
 
     showResultsModal(quizResultsText);
+
+    //reset ui elements to default
     changeElementVisibility(coverContainer, "none");
+    resetHeader();
+}
+
+function resetHeader() {
+    secondsEl.textContent = "";
+    //shuffle question and answers order
+
+    activeQuestion = questions[0];
+    questionNumber = 0;
+    questionText = "";
+    rightAnswerCount = 0;
+    wrongAnswerCount = 0;
+    quizResultsText = "TIMES UP. YOU FAIL!!!!!";
+    finishedQuiz = false;
 }
 
 function setNextQuesiton() {
