@@ -9,6 +9,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="./scripts/highScoresScrpit.js"></script>
     <title>JS Quiz - High Scores</title>
 </head>
 
@@ -41,7 +42,7 @@
             <div class="container sectionCard">
                 <h2>JS Quiz High Scores</h2>
                 <p>Rank ordered scores:</p>            
-                <table class="table table-striped">
+                <table id="highScoresTable" class="table table-striped">
                   <thead>
                     <tr>
                       <th>Player Name</th>
@@ -51,21 +52,8 @@
                       <th>Score (seconds)</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>geotecdev</td>
-                      <td>2021-01-05</td>
-                      <td class="collapseCol">6</td>
-                      <td class="collapseCol">1</td>
-                      <td>19</td>
-                    </tr>
-                    <tr>
-                        <td>jsMaster</td>
-                        <td>2021-01-05</td>
-                        <td class="collapseCol">7</td>
-                        <td class="collapseCol">0</td>
-                        <td>27</td>
-                    </tr>
+                  <tbody id="highScoresTableBody">
+                    <!--script populates from localstorage 'highScores'-->
                   </tbody>
                 </table>
               </div>

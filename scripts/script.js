@@ -126,14 +126,15 @@ function runQuiz() {
             //if quiz is completed...
             if (questionNumber > questions.length)
             {
-                finishedQuiz = true;                
                 clearInterval(timer);
+                finishedQuiz = true;                                
+                timerCount = 40;
                 endQuiz();
             }
         }
 
         //if time runs out...
-        if (timerCount === 0) {
+        if (timerCount <= 0) {
             clearInterval(timer);            
             endQuiz();              
         }
@@ -143,6 +144,7 @@ function runQuiz() {
 }
 
 function endQuiz() {
+    clearInterval(timer);
     //if user completed the quiz...
     if (finishedQuiz) {
         //set more positive message text for the results modal
@@ -187,6 +189,7 @@ function resetHeader() {
     wrongAnswerCount = 0;
     quizResultsText = "TIMES UP. YOU FAIL!!!!!";
     finishedQuiz = false;
+    timerCount = 40;
 }
 
 function setNextQuesiton() {
