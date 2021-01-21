@@ -13,9 +13,11 @@ window.onload = function() {
     //propulate table
     if (highScores != null && highScores.length > 0) {
 
+        //desc order sort by score
         highScores.sort(scoreCompare);
-        var tableRowsMarkup = "";
 
+        var tableRowsMarkup = "";
+        //create a row for each record
         for (var i = 0; i < highScores.length; i++) {
             var score = highScores[i];
             tableRowsMarkup += "<tr><td>" + score.playerName + "</td>" +
@@ -30,7 +32,7 @@ window.onload = function() {
     }
 }
 
-//comparer function for highScores sort
+//comparer for highScores sort
 function scoreCompare( a, b ) {
     if ( a.score < b.score ){
       return 1;
