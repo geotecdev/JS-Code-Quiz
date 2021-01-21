@@ -76,13 +76,19 @@ window.onload = function() {
 //player name set localstorage logic and ui changes to start quiz. calls main 'runQuiz' function 
 function startQuiz() {
 
+    //disable start btn for duration of quiz
+
+
     //get or set player name for highscores table (opt false param prevents deletion of existing name)
     getPlayerName(false);
 
     //set first question object and start the quiz
     setNextQuesiton();
     changeElementVisibility(coverContainer, "none");
-    runQuiz()      
+    runQuiz();
+    
+    //re-enable start button once quiz has ended
+    changeElementVisibility(startBtn, "block");
 }
 
 //shared function function for start btn and 'player:' [getPlayerName(false)] tag click event.
@@ -90,7 +96,7 @@ function getPlayerName(clearExistingName=true) {
     // -- get player name from localstorage, prompt and set if none exists
     //delete existing playername from local storage if reset argument is passed
     if (clearExistingName) {
-        localStorage.removeItem("playerName")
+        localStorage.removeItem("playerName");
     }
 
     var playerName = localStorage.getItem("playerName");
@@ -123,19 +129,22 @@ function runQuiz() {
         //quiz logic
         if (timerCount > 0) {
 
+            changeElementVisibility(startBtn, "none");
             //if quiz is completed...
             if (questionNumber > questions.length)
             {
                 clearInterval(timer);
                 finishedQuiz = true;                                
                 timerCount = 40;
+                changeElementVisibility(startBtn, "block");
                 endQuiz();
             }
         }
 
         //if time runs out...
         if (timerCount <= 0) {
-            clearInterval(timer);            
+            clearInterval(timer);
+            changeElementVisibility(startBtn, "block");        
             endQuiz();              
         }
     }, 1000);

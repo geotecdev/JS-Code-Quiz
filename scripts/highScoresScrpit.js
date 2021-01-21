@@ -5,7 +5,7 @@ var highScores;
 //makes sure window has loaded before accessing page elements
 window.onload = function() {
     highScoresTableEl = document.querySelector("#highScoresTable");
-    hsJson = localStorage.getItem("highScores")
+    hsJson = localStorage.getItem("highScores");
 
     //parse highScore objects
     highScores = JSON.parse(hsJson);
