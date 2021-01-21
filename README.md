@@ -2,19 +2,19 @@
 Website with event driven JavaScript and localstorage that quizzes user's JS knowledge
 
 
-#Application Description
+# Application Description
 This web app runs a quiz on a timer. The quiz asks users a series of 6 JavaScript related questions and saves a score to local storeage based on time
 remaining (if all the questions are answered). incorrect answers decrement the countdown timer by 7 seconds. the app also prompts users to enter
 a 'player name' value--also saved to local storage--so that thier scores can be displayed in a high scores table (highScores).  
 
 
-#Application Notes
+# Application Notes
 The app's logic is implimented in 'vanilla' javascript. I used globalally scoped variables in most instances
 and wrapped the statements that set element variables and event liteners with 'window.onload' to prevent execution
 before the elements in quetsion load before those statements are executed. The help modal is a bootstrap component,
 but the 'results' modal that shows at the end of the quiz is custom.
 
-#Extra Features
+# Extra Features
 -Responsive bootstrap layout
 -if player name is not in local storage when user clicks the 'start quiz'
   button, they will be prompted to enter it
@@ -23,13 +23,13 @@ but the 'results' modal that shows at the end of the quiz is custom.
 -high scores are persisted in localstorage. Table display sorts them by descending 
  score with a custom comparer
 
-#Link to Deployed Application
+# Link to Deployed Application
 https://geotecdev.github.io/JS-Code-Quiz
 
-#Link to Github Repository
+# Link to Github Repository
 https://github.com/geotecdev/JS-Code-Quiz
 
-#main page appearance (screenshot)
+# main page appearance (screenshot)
 A static image of the completed landing page can be found at the link below
 ```md
 ![alt text](images/Screenshot.png)
