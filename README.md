@@ -32,7 +32,7 @@ https://github.com/geotecdev/JS-Code-Quiz
 # main page appearance (screenshot)
 A static image of the completed landing page can be found at the link below
 ```md
-![alt text](images/Screenshot.png)
+![alt text](./images/Screenshot.png)
 ```
 
 #Licence
